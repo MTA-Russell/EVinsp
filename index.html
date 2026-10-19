@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"><meta name="theme-color" content="#14181c"><meta name="apple-mobile-web-app-title" content="EV Inspection"><title>MagTec EV Inspection</title><style>
+:root{color-scheme:dark;--bg:#14181c;--panel:#1c2127;--line:#36404a;--text:#eef1f4;--sub:#adb7c1;--amber:#f5a623}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 'Segoe UI',Roboto,Helvetica,Arial,sans-serif;padding:20px 12px 32px}.app{max-width:880px;margin:auto;background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden}.head{padding:22px 24px 18px;border-bottom:1px solid var(--line)}.brand{font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--amber);text-transform:uppercase}h1{font-size:24px;line-height:1.25;font-weight:600;margin:6px 0 8px}h2{font-size:20px;font-weight:600;margin:0 0 8px}p{margin:0 0 16px}.sub{color:var(--sub);font-size:14px}.head p{margin:0}.steps{display:flex;flex-wrap:wrap;gap:6px;padding:14px 24px;border-bottom:1px solid var(--line)}.step{border:1px solid var(--line);background:var(--bg);color:var(--sub);border-radius:6px;min-height:44px;padding:9px 12px;font:600 13px/1.3 'Segoe UI',Roboto,Helvetica,Arial,sans-serif;cursor:pointer}.step[aria-current=step]{background:var(--amber);border-color:var(--amber);color:#211809}.progress{height:4px;background:var(--line)}#progressFill{height:100%;width:0;background:var(--amber)}.content{padding:24px}.panel[hidden]{display:none!important}.fields{display:grid;grid-template-columns:1fr 1fr;gap:16px}label,.field-label{display:block;font-size:14px;font-weight:600;margin-bottom:7px}input,select,textarea{width:100%;min-width:0;background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:6px;padding:12px;font:16px/1.4 'Segoe UI',Roboto,Helvetica,Arial,sans-serif}textarea{resize:vertical;min-height:88px}input,select{min-height:48px}input:focus,select:focus,textarea:focus{outline:2px solid var(--amber);outline-offset:1px}button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--amber);outline-offset:3px}.field-help{color:var(--sub);font-size:12px;margin:5px 0 0}.check{padding:18px 0;border-bottom:1px solid var(--line)}.check:first-child{padding-top:0}.check:last-child{border-bottom:0}.item-name{font-size:16px;font-weight:600;margin:0 0 12px}.number{color:var(--amber);display:inline-block;min-width:28px}.check-fields{display:grid;grid-template-columns:150px 90px minmax(0,1fr);gap:12px;align-items:start}.comment textarea{min-height:48px;height:48px}.expiry{margin-top:12px;max-width:290px}.check[data-result=Fail]{border-left:3px solid #ff9389;padding-left:12px}.check[data-result=Pass]{border-left:3px solid #62c994;padding-left:12px}.check[data-result="N/A"]{border-left:3px solid #a5b8cf;padding-left:12px}.tire{border-bottom:1px solid var(--line);padding:18px 0}.tire:first-child{padding-top:0}.tire-name{font-weight:600;margin-bottom:10px}.notes{margin-top:24px}.foot{display:flex;gap:12px;border-top:1px solid var(--line);padding:18px 24px}.button{display:inline-flex;justify-content:center;align-items:center;min-height:48px;padding:12px 16px;border:1px solid var(--line);border-radius:7px;text-decoration:none;font:600 15px/1.4 'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);cursor:pointer;text-align:center}.primary{background:var(--amber);border-color:var(--amber);color:#211809}.primary:hover{background:#ffbb4d}.grow{flex:1}.actions{display:flex;flex-wrap:wrap;gap:12px;margin:18px 0}.actions .button{flex:1 1 180px}.notice{padding:14px;border:1px solid #846332;border-radius:7px;background:#30281b;color:var(--text);font-size:14px;margin-bottom:18px}.recipients{padding:14px;background:var(--bg);border-radius:7px;margin:16px 0;overflow-wrap:anywhere;font-size:13px}.recipients strong{display:block;margin-bottom:4px;color:var(--sub)}.report{font:14px/1.6 ui-monospace,SFMono-Regular,Consolas,monospace;min-height:360px;white-space:pre-wrap}.backup{border:1px solid var(--line);border-radius:7px;padding:14px;margin-top:18px}.backup summary{font-size:14px;font-weight:600;cursor:pointer;min-height:28px}.backup p{margin-top:12px;margin-bottom:8px}.status{font-size:13px;color:var(--sub);min-height:20px;margin-top:10px}.bottom{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 24px;border-top:1px solid var(--line)}.bottom .button{font-size:12px;min-height:40px;padding:8px 12px}.bottom small{color:var(--sub);font-size:12px}.step-count{font-size:12px;color:var(--sub);margin-bottom:12px}noscript{display:block;padding:24px;color:var(--text)}
+@media(max-width:620px){body{padding:0}.app{border:0;border-radius:0}.head,.content{padding:20px 16px}.steps{padding:12px 16px;gap:5px}.step{flex:1 1 28%;font-size:12px;padding:8px}.fields{grid-template-columns:1fr}.check-fields{grid-template-columns:minmax(0,1fr) 90px}.comment{grid-column:1/-1}.comment textarea{height:72px}.foot,.bottom{padding:16px}.tire .fields{grid-template-columns:1fr 1fr}.report{font-size:13px}.bottom{align-items:flex-start}.head h1{font-size:22px}}
+
+.app [hidden]{display:none!important}.entry{padding:20px 0;border-bottom:1px solid var(--line)}.entry:first-child{padding-top:0}.entry:last-child{border-bottom:0}.entry h3{font-size:17px;font-weight:600;margin:0 0 12px}.entry .answer-notes{margin-top:12px}.entry .answer-notes textarea{min-height:70px}.entry .quantity-fields{display:grid;grid-template-columns:minmax(130px,1fr) minmax(0,2fr);gap:14px}.entry .quantity-fields textarea{min-height:48px;height:48px}.entry .condition{min-height:75px}.entry select{max-width:300px}@media(max-width:620px){.entry .quantity-fields{grid-template-columns:1fr}.entry .quantity-fields textarea{height:75px}.entry select{max-width:none}}
+</style></head><body>
+<main class="app">
+<header class="head"><div class="brand">MagTec Alaska</div><h1>EV Inspection</h1><p class="sub">Envirovac &middot; In, Out &amp; Yard inspections</p></header>
+<nav class="steps" aria-label="Inspection sections">
+ <button type="button" class="step" data-step="0" aria-controls="detailsPanel">1. Details</button>
+ <button type="button" class="step" data-step="1" aria-controls="equipment">2. Equipment condition</button>
+ <button type="button" class="step" data-step="2" aria-controls="condition">3. Condition &amp; preparation</button>
+ <button type="button" class="step" data-step="3" aria-controls="notesPanel">4. Accessories &amp; notes</button>
+ <button type="button" class="step" data-step="4" aria-controls="review">5. Review &amp; email</button>
+</nav>
+<div class="progress" aria-hidden="true"><div id="progressFill"></div></div>
+<noscript>Open this page in Safari, Chrome, or Edge with JavaScript enabled to fill out the inspection.</noscript>
+<div class="content" id="content" hidden>
+ <div class="step-count" id="stepCount" aria-live="polite"></div>
+ <section class="panel" id="detailsPanel" aria-labelledby="detailsTitle">
+  <h2 id="detailsTitle">EV &amp; inspector details</h2><p class="sub">Enter the asset details and select In, Out, or Yard inspection.</p><div class="fields"><div><label for="asset">Asset number</label><input id="asset" data-key="asset" type="text" autocomplete="off"></div>
+<div><label for="technician">Technician / inspector name</label><input id="technician" data-key="technician" type="text" autocomplete="name"><p class="field-help">Your name supplies the initials for each answered inspection item.</p></div>
+<div><label for="date">Inspection date</label><input id="date" data-key="date" type="date" autocomplete="off"></div>
+<div><label for="inspectionType">Inspection type</label><select id="inspectionType" data-key="inspectionType"><option value="">Select inspection type</option><option value="In">In</option><option value="Out">Out</option><option value="Yard">Yard</option></select></div>
+<div><label for="evType">EV type</label><select id="evType" data-key="evType"><option value="">Select ev type</option><option value="53 ft">53 ft</option><option value="20 ft 2 stall">20 ft 2 stall</option><option value="20 ft 1 stall and shower">20 ft 1 stall and shower</option><option value="Other">Other</option></select></div>
+<div id="evTypeOtherField" hidden><label for="evTypeOther">Other EV type — please specify</label><textarea id="evTypeOther" data-key="evTypeOther" rows="3"></textarea></div>
+<div><label for="standbyDate">Standby date (if applicable)</label><input id="standbyDate" data-key="standbyDate" type="date" autocomplete="off"></div>
+<div><label for="rentalCustomer">Rental order number or customer name</label><input id="rentalCustomer" data-key="rentalCustomer" type="text" autocomplete="off"></div>
+<div><label for="serial">Serial number</label><input id="serial" data-key="serial" type="text" autocomplete="off"></div>
+<div><label for="hours">Hours</label><input id="hours" data-key="hours" type="text" autocomplete="off"></div>
+<div><label for="fuelLevel">Fuel level</label><input id="fuelLevel" data-key="fuelLevel" type="text" autocomplete="off"></div></div>
+ </section>
+ <section class="panel" id="equipment" aria-labelledby="equipmentTitle" hidden>
+  <h2 id="equipmentTitle">Equipment condition</h2><p class="sub">Select the condition of each item and add notes. Enter a quantity for fire extinguishers.</p><div id="equipmentItems"></div>
+ </section>
+ <section class="panel" id="condition" aria-labelledby="conditionTitle" hidden>
+  <h2 id="conditionTitle">Condition &amp; preparation</h2><p class="sub">Record the water and sewer tank status, winterization, and condition of each component. Add notes wherever needed.</p><div id="conditionItems"></div><div id="otherItems"></div><button type="button" class="button" id="addOther">Add another other</button>
+ </section>
+ <section class="panel" id="notesPanel" aria-labelledby="notesTitle" hidden>
+  <h2 id="notesTitle">Accessories &amp; notes</h2>
+  <label for="accessories">Accessories</label><textarea id="accessories" data-key="accessories" rows="4"></textarea>
+  <div class="notes"><label for="notes">Additional comments / repairs needed</label><textarea id="notes" data-key="notes" rows="5"></textarea></div>
+ </section>
+ <section class="panel" id="review" aria-labelledby="reviewTitle" hidden>
+  <h2 id="reviewTitle">Review &amp; open email</h2><p class="sub">The completed inspection goes in the email body. Review the draft in your email app, then send it.</p>
+  <div id="completion" class="notice"></div>
+  <div class="recipients"><strong>Email recipients</strong><span id="recipientList"></span></div>
+  <div class="actions"><a class="button primary" id="openEmail" href="mailto:NSrentals@magtecalaska.com,nsshop@magtecalaska.com,nsd-mgr@magtecalaska.com">Open filled-out email</a></div>
+  <p class="status" id="mailStatus" role="status"></p>
+  <label for="reportText">Complete email body</label><textarea id="reportText" class="report" readonly spellcheck="false"></textarea>
+  <p class="field-help">The completed email should end with END OF INSPECTION.</p>
+  <details class="backup" id="backup"><summary>Backup if the email opens with missing text</summary>
+   <p class="sub">If your phone limits the email text, copy the full report, open the addressed email, and paste it into the body.</p>
+   <div class="actions"><button type="button" class="button" id="copyReport">1. Copy full report</button><a class="button" id="shortEmail" href="mailto:NSrentals@magtecalaska.com,nsshop@magtecalaska.com,nsd-mgr@magtecalaska.com">2. Open email to paste</a></div>
+   <button type="button" class="button" id="selectReport">Select report for manual copy</button><p class="status" id="copyStatus" role="status"></p>
+   <p class="field-help">If your device blocks copying or opening email from this browser, use your approved email app with the addresses and report shown above.</p>
+  </details>
+ </section>
+</div>
+<div class="foot" id="foot" hidden><button class="button" id="back" type="button">Back</button><button class="button primary grow" id="next" type="button">Next</button></div>
+<footer class="bottom"><small id="draftStatus" role="status">Your entries stay here while you fill out the form.</small><button class="button" id="clear" type="button">Start over</button></footer>
+</main>
+<script id="evConfig">var EVConfig={"fields": [{"key": "asset", "label": "Asset number", "type": "text"}, {"key": "technician", "label": "Technician / inspector name", "type": "text"}, {"key": "date", "label": "Inspection date", "type": "date"}, {"key": "inspectionType", "label": "Inspection type", "type": "select", "options": ["In", "Out", "Yard"]}, {"key": "evType", "label": "EV type", "type": "select", "options": ["53 ft", "20 ft 2 stall", "20 ft 1 stall and shower", "Other"]}, {"key": "evTypeOther", "label": "Other EV type — please specify", "type": "textarea"}, {"key": "standbyDate", "label": "Standby date (if applicable)", "type": "date"}, {"key": "rentalCustomer", "label": "Rental order number or customer name", "type": "text"}, {"key": "serial", "label": "Serial number", "type": "text"}, {"key": "hours", "label": "Hours", "type": "text"}, {"key": "fuelLevel", "label": "Fuel level", "type": "text"}], "groups": [{"id": "equipment", "title": "Equipment condition"}, {"id": "condition", "title": "Condition & preparation"}], "items": [{"key": "stairsRails", "group": "equipment", "title": "Stairs / rails", "type": "condition"}, {"key": "platforms", "group": "equipment", "title": "Platforms", "type": "condition"}, {"key": "landings", "group": "equipment", "title": "Landings", "type": "condition"}, {"key": "landingPads", "group": "equipment", "title": "Landing pads", "type": "condition"}, {"key": "levelingLegs", "group": "equipment", "title": "Leveling / adjustment legs", "type": "condition"}, {"key": "powerCord", "group": "equipment", "title": "Main power cord", "type": "condition"}, {"key": "fireExtinguisher", "group": "equipment", "title": "Fire extinguisher", "type": "quantity"}, {"key": "waterEmpty", "group": "condition", "title": "Water tank — empty?", "type": "yesno"}, {"key": "waterCondition", "group": "condition", "title": "Water tank — condition", "type": "condition"}, {"key": "sewerEmpty", "group": "condition", "title": "Sewer tank — empty?", "type": "yesno"}, {"key": "sewerCondition", "group": "condition", "title": "Sewer tank — condition", "type": "condition"}, {"key": "winterized", "group": "condition", "title": "Winterized?", "type": "yesno"}, {"key": "sinks", "group": "condition", "title": "Sinks", "type": "condition"}, {"key": "urinals", "group": "condition", "title": "Urinals", "type": "condition"}, {"key": "toilets", "group": "condition", "title": "Toilets", "type": "condition"}, {"key": "stallWallsDoors", "group": "condition", "title": "Stall walls and doors", "type": "condition"}, {"key": "pumps", "group": "condition", "title": "Pumps", "type": "condition"}, {"key": "plumbing", "group": "condition", "title": "Plumbing", "type": "condition"}, {"key": "interiorLights", "group": "condition", "title": "Interior lights", "type": "condition"}, {"key": "exteriorLights", "group": "condition", "title": "Exterior lights", "type": "condition"}, {"key": "exitSigns", "group": "condition", "title": "Exit signs", "type": "condition"}, {"key": "receptacles", "group": "condition", "title": "Receptacles", "type": "condition"}, {"key": "flooring", "group": "condition", "title": "Flooring", "type": "condition"}, {"key": "heaters", "group": "condition", "title": "Heaters", "type": "condition"}, {"key": "heatTrace", "group": "condition", "title": "Heat trace", "type": "condition"}, {"key": "equipmentCondition", "group": "condition", "title": "Condition of equipment", "type": "condition"}], "recipients": ["NSrentals@magtecalaska.com", "nsshop@magtecalaska.com", "nsd-mgr@magtecalaska.com"]};</script>
+<script id="evApp">var EVReport=(function(C){
+ 'use strict';
+ function str(v){return v==null?'':String(v);}
+ function value(v){return str(v).trim()?str(v):'Not recorded';}
+ function initials(s){return (str(s.fields.technician).match(/\p{L}[\p{L}\p{M}'’-]*/gu)||[]).map(function(w){return Array.from(w)[0];}).join('').toUpperCase();}
+ function today(){var d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
+ function fresh(){var entries={};C.items.forEach(function(i){entries[i.key]={answer:'',condition:'',notes:''};});return {version:1,schemaRevision:2,formKind:'ev',fields:{date:today()},entries:entries,others:[{name:'',condition:'',notes:''}]};}
+ function normalize(s){
+  var d=fresh();if(!s||s.version!==1||s.formKind!=='ev')return d;
+  C.fields.concat([{key:'accessories'},{key:'notes'}]).forEach(function(f){var v=(s.fields||{})[f.key];if(typeof v==='string'&&(!f.options||f.options.indexOf(v)>=0||v===''))d.fields[f.key]=v;});
+  C.items.forEach(function(i){var e=(s.entries||{})[i.key]||{},v=d.entries[i.key];v.answer=str(e.answer);v.notes=str(e.notes);v.condition=['In good condition','Needs repair'].indexOf(e.condition)>=0?e.condition:'';
+   if(s.schemaRevision!==2&&['stairsRails','platforms','landings','landingPads','levelingLegs','powerCord'].indexOf(i.key)>=0){v.answer=v.condition;v.condition='';}
+   if(i.type==='condition'&&['','In good condition','Needs repair'].indexOf(v.answer)<0){
+    var previous=v.answer;
+    v.answer='';
+    v.notes='Previous answer: '+previous+(v.notes?'\n'+v.notes:'');
+   }
+   if(i.type==='yesno'&&['','Yes','No','N/A'].indexOf(v.answer)<0)v.answer='';
+  });
+  if(Array.isArray(s.others)&&s.others.length)d.others=s.others.map(function(o){o=o||{};return {name:str(o.name),condition:['In good condition','Needs repair'].indexOf(o.condition)>=0?o.condition:'',notes:str(o.notes)};});
+  return d;
+ }
+ function report(s){
+  var lines=['ENVIROVAC (EV) INSPECTION REPORT',''];
+  C.fields.forEach(function(f){if(f.key==='evTypeOther'&&s.fields.evType!=='Other')return;lines.push(f.label+': '+value(s.fields[f.key]));});lines.push('Inspector initials (from name): '+value(initials(s)));
+  C.groups.forEach(function(g){lines.push('',g.title.toUpperCase());C.items.forEach(function(i){if(i.group!==g.id)return;var e=s.entries[i.key];lines.push('',i.title);if(i.type==='quantity'){lines.push('Quantity: '+value(e.answer),'Condition: '+value(e.condition),'Notes: '+value(e.notes));}else{lines.push((i.type==='condition'?'Condition: ':'Answer: ')+value(e.answer));if(e.notes.trim())lines.push('Details: '+e.notes);}if(e.answer.trim()||e.notes.trim()||str(e.condition).trim())lines.push('Initials: '+value(initials(s)));});});
+  lines.push('','OTHER ITEMS');var others=(s.others||[]).filter(function(o){return o.name.trim()||o.condition||o.notes.trim();});if(!others.length)lines.push('None entered');others.forEach(function(o,i){lines.push('','Other '+(i+1)+': '+value(o.name),'Condition: '+value(o.condition),'Notes: '+value(o.notes),'Initials: '+value(initials(s)));});
+  lines.push('','ACCESSORIES',s.fields.accessories&&s.fields.accessories.trim()?s.fields.accessories:'None entered','','ADDITIONAL COMMENTS / REPAIRS NEEDED',s.fields.notes&&s.fields.notes.trim()?s.fields.notes:'None entered','','END OF INSPECTION');
+  return lines.join('\n').replace(/\r\n|\r|\n/g,'\r\n');
+ }
+ function encode(v){var s=str(v);if(s.toWellFormed)s=s.toWellFormed();else s=s.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDFFF]/g,function(m){return m.length===2?m:'\uFFFD';});return encodeURIComponent(s);}
+ function link(s,body){var subject=['EV Inspection',value(s.fields.inspectionType),value(s.fields.asset),value(s.fields.date)].join(' - ');return 'mailto:'+C.recipients.join(',')+'?subject='+encode(subject)+(body?'&body='+encode(report(s)):'');}
+ return {fresh:fresh,normalize:normalize,initials:initials,report:report,link:link};
+})(EVConfig);
+
+(function(C,R){
+ 'use strict';
+ var KEY='magtec-ev-inspection-draft-v1',state=R.fresh(),step=0;
+ var panels=['detailsPanel','equipment','condition','notesPanel','review'];
+ function el(id){return document.getElementById(id);}
+ try{var saved=localStorage.getItem(KEY);if(saved){state=R.normalize(JSON.parse(saved));el('draftStatus').textContent='Saved EV inspection restored on this device.';}}catch(e){}
+ function syncEVType(){el('evTypeOtherField').hidden=state.fields.evType!=='Other';}
+ function save(){try{localStorage.setItem(KEY,JSON.stringify(state));el('draftStatus').textContent='Draft saved on this device.';}catch(e){el('draftStatus').textContent='Keep this page open to retain your entries.';}}
+ function element(tag,cls,text){var n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=text;return n;}
+ function field(parent,labelText,id,control){var wrap=element('div'),label=element('label','',labelText);label.htmlFor=id;control.id=id;wrap.append(label,control);parent.appendChild(wrap);return wrap;}
+ function textarea(value){var n=element('textarea');n.rows=2;n.value=value||'';return n;}
+ function conditionSelect(value){var n=element('select');[['','Select condition'],['In good condition','In good condition'],['Needs repair','Needs repair']].forEach(function(v){var o=element('option','',v[1]);o.value=v[0];n.appendChild(o);});n.value=value||'';return n;}
+ function buildItems(){C.items.forEach(function(i){
+  var entry=state.entries[i.key],row=element('div','entry');row.appendChild(element('h3','',i.title));
+  var answer;
+  if(i.type==='quantity'){
+   var grid=element('div','quantity-fields');answer=element('input');answer.type='text';answer.value=entry.answer;answer.autocomplete='off';field(grid,'Quantity','answer-'+i.key,answer);
+   var condition=conditionSelect(entry.condition);field(grid,'Condition','condition-'+i.key,condition);condition.addEventListener('change',function(){entry.condition=condition.value;save();});
+   var notes=textarea(entry.notes);field(grid,'Notes / repairs needed','notes-'+i.key,notes);notes.addEventListener('input',function(){entry.notes=notes.value;save();});row.appendChild(grid);
+  }else if(i.type==='condition'){
+   answer=conditionSelect(entry.answer);field(row,'Condition','answer-'+i.key,answer);
+   var conditionNotes=textarea(entry.notes);field(row,'Notes / repairs needed','notes-'+i.key,conditionNotes).className='answer-notes';conditionNotes.addEventListener('input',function(){entry.notes=conditionNotes.value;save();});
+  }else if(i.type==='yesno'){
+   answer=element('select');[['','Select answer'],['Yes','Yes'],['No','No'],['N/A','N/A']].forEach(function(v){var o=element('option','',v[1]);o.value=v[0];answer.appendChild(o);});answer.value=entry.answer;field(row,'Answer','answer-'+i.key,answer);
+   var details=textarea(entry.notes);field(row,i.notesLabel||'Details / notes','notes-'+i.key,details).className='answer-notes';details.addEventListener('input',function(){entry.notes=details.value;save();});
+  }else{
+   answer=textarea(entry.answer);answer.className='condition';field(row,i.type==='condition'?'Condition / findings':'Certificate details / reference','answer-'+i.key,answer);
+  }
+  answer.addEventListener((i.type==='yesno'||i.type==='condition')?'change':'input',function(){entry.answer=answer.value;save();});el(i.group+'Items').appendChild(row);
+ });}
+ function buildOthers(){
+  el('otherItems').replaceChildren();state.others.forEach(function(o,i){
+   var row=element('div','entry');row.appendChild(element('h3','',i===0?'Other':'Other '+(i+1)));
+   var name=element('input');name.type='text';name.value=o.name;name.autocomplete='off';field(row,'Item / component','otherName'+i,name);
+   var condition=conditionSelect(o.condition);field(row,'Condition','otherCondition'+i,condition).className='answer-notes';
+   var notes=textarea(o.notes);field(row,'Notes / repairs needed','otherNotes'+i,notes).className='answer-notes';
+   [[name,'name'],[condition,'condition'],[notes,'notes']].forEach(function(pair){pair[0].addEventListener(pair[1]==='condition'?'change':'input',function(){o[pair[1]]=pair[0].value;save();});});
+   el('otherItems').appendChild(row);
+  });
+ }
+ el('addOther').addEventListener('click',function(){state.others.push({name:'',condition:'',notes:''});buildOthers();save();el('otherName'+(state.others.length-1)).focus();});
+ function review(){var questions=C.items.filter(function(i){return !i.optional;}),answered=questions.filter(function(i){var e=state.entries[i.key];return e.answer.trim()!==''&&(i.type!=='quantity'||e.condition.trim()!=='');}).length;
+  var others=state.others.filter(function(o){return o.name.trim()||o.condition||o.notes.trim();});
+  var summary=answered+' of '+questions.length+' inspection questions answered. Blank fields appear as Not recorded.';
+  if(others.length)summary+=' '+others.length+' other item(s) entered.';
+  if(!state.fields.inspectionType)summary+=' Inspection type is not selected.';if(!state.fields.evType)summary+=' EV type is not selected.';if(state.fields.evType==='Other'&&!(state.fields.evTypeOther||'').trim())summary+=' Other EV type has not been specified.';if(!R.initials(state))summary+=' Enter the technician name in Details to include initials.';
+  el('completion').textContent=summary;el('reportText').value=R.report(state);el('openEmail').href=R.link(state,true);el('shortEmail').href=R.link(state,false);el('recipientList').textContent=C.recipients.join('; ');
+ }
+ function show(index){step=Math.max(0,Math.min(panels.length-1,index));panels.forEach(function(id,i){el(id).hidden=i!==step;});document.querySelectorAll('[data-step]').forEach(function(b){if(Number(b.dataset.step)===step)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current');});el('stepCount').textContent='Section '+(step+1)+' of '+panels.length;el('progressFill').style.width=((step+1)/panels.length*100)+'%';el('back').hidden=step===0;el('next').hidden=step===panels.length-1;el('next').textContent=step===panels.length-2?'Review inspection':'Next';el('foot').hidden=false;if(step===panels.length-1)review();window.scrollTo(0,0);}
+ document.querySelectorAll('[data-key]').forEach(function(n){n.value=state.fields[n.dataset.key]||'';n.addEventListener(n.tagName==='SELECT'?'change':'input',function(){state.fields[n.dataset.key]=n.value;if(n.dataset.key==='evType')syncEVType();save();});});
+ document.querySelectorAll('[data-step]').forEach(function(n){n.addEventListener('click',function(){show(Number(n.dataset.step));});});
+ el('back').addEventListener('click',function(){show(step-1);});el('next').addEventListener('click',function(){show(step+1);});
+ el('openEmail').addEventListener('click',function(){save();el('mailStatus').textContent='Opening your email app. Check that the draft ends with END OF INSPECTION, then send it. Use the backup below if text is missing.';});
+ el('shortEmail').addEventListener('click',function(){el('copyStatus').textContent='Paste the full report into the email body, review the addresses, then send.';});
+ function selectReport(){var n=el('reportText');n.focus();n.select();n.setSelectionRange(0,n.value.length);}
+ function legacyCopy(){selectReport();var ok=false;try{ok=document.execCommand('copy');}catch(e){}el('copyStatus').textContent=ok?'Full report copied. Open the email to paste it.':'Report selected. Use your device\'s Copy command, then open the email to paste it.';}
+ el('copyReport').addEventListener('click',function(){if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(el('reportText').value).then(function(){el('copyStatus').textContent='Full report copied. Open the email to paste it.';},legacyCopy);}else legacyCopy();});
+ el('selectReport').addEventListener('click',function(){selectReport();el('copyStatus').textContent='Report selected. Use your device\'s Copy command, then open the email to paste it.';});
+ el('clear').addEventListener('click',function(){if(!window.confirm('Clear this inspection and start a new one?'))return;state=R.fresh();try{localStorage.removeItem(KEY);}catch(e){}document.querySelectorAll('[data-key]').forEach(function(n){n.value=state.fields[n.dataset.key]||'';});C.groups.forEach(function(g){el(g.id+'Items').replaceChildren();});buildItems();buildOthers();el('mailStatus').textContent='';el('copyStatus').textContent='';el('reportText').value='';el('backup').open=false;el('draftStatus').textContent='New EV inspection started.';syncEVType();show(0);});
+ buildItems();buildOthers();el('content').hidden=false;syncEVType();show(0);
+})(EVConfig,EVReport);
+</script>
+</body></html>
